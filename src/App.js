@@ -29,10 +29,10 @@ function App() {
   //useEffect(() => {
   //  addtolist([]);
   //}, [selectedday]);
-  useEffect(() => {
-    var Masterobject = JSON.parse(localStorage.getItem("Masterkey"));
-    setsuperstate(Masterobject);
-  }, []);
+  //// useEffect(() => {
+  //  var Masterobject = JSON.parse(localStorage.getItem("Masterkey"));
+  //  setsuperstate(Masterobject);
+  //}, []);
   function myFunction() {
     var element = document.getElementById("hidden");
     element.classList.toggle("mystyle");
@@ -52,25 +52,38 @@ function App() {
   function handlesubmit(event) {
     //const sum=0
     event.preventDefault();
-    
+
     //const mytemplist = [...list, current];
-   // console.log(mytemplist);
-   // addtolist(mytemplist);
-    addtocurrent({
-      data: " ",
-      key: " ",
-      title: " ",
-    });
+    // console.log(mytemplist);
+    // addtolist(mytemplist);
+
     console.log(selectedday);
-    var tempsuper = {
-      ...superstate,
-      [new Date(selectedday).toDateString()]: mytemplist,
-    };
+    //var tempsuper = {
+    //  ...superstate,
+    //  [new Date(selectedday).toDateString()]: mytemplist,
+    //};
     console.log(tempsuper);
     var sum = 0,
       msum = 0;
+    var mytemplist;
     var Masterobject = JSON.parse(localStorage.getItem("Masterkey"));
     if (Masterobject) {
+      settt(amount);
+      console.log("error found");
+      mytemplist = [current];
+      addtolist(mytemplist);
+      addtocurrent({
+        data: " ",
+        key: " ",
+        title: " ",
+      });
+      console.log(mytemplist);
+      var tempsuper = {
+        ...superstate,
+        [new Date(selectedday).toDateString()]: mytemplist,
+      };
+      setsuperstate(tempsuper);
+      localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
       for (const [key, value] of Object.entries(Masterobject)) {
         if (key == new Date(selectedday).toDateString()) {
           for (const obk of value) {
@@ -78,9 +91,20 @@ function App() {
           }
           sum += +amount;
           settt(sum);
-          const mytemplist = [...value, current];
-         console.log(mytemplist);
-         addtolist(mytemplist);
+          mytemplist = [...value, current];
+          addtolist(mytemplist);
+          addtocurrent({
+            data: " ",
+            key: " ",
+            title: " ",
+          });
+          console.log(mytemplist);
+          var tempsuper = {
+            ...superstate,
+            [new Date(selectedday).toDateString()]: mytemplist,
+          };
+          setsuperstate(tempsuper);
+          localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
         }
 
         if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
@@ -88,21 +112,30 @@ function App() {
             msum += Number(oba.data);
             // console.log(obj);
           }
-          msum += Number(amount);
-          setmtotal(msum);
-        } else {
-          settt(amount);
         }
       }
+      msum += Number(amount);
+      setmtotal(msum);
     } else {
       sum = amount;
       settt(sum);
       setmtotal(amount);
+      console.log("error");
+      mytemplist = [current];
+      addtolist(mytemplist);
+      addtocurrent({
+        data: " ",
+        key: " ",
+        title: " ",
+      });
+      console.log(mytemplist);
+      var tempsuper = {
+        ...superstate,
+        [new Date(selectedday).toDateString()]: mytemplist,
+      };
+      setsuperstate(tempsuper);
+      localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
     }
-
-    console.log(sum);
-    setsuperstate(tempsuper);
-    localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
   }
 
   {
