@@ -1,7 +1,7 @@
 import React from "react";
 import "./ListItems.css";
 function ListItems(props) {
-  const mylist = props.list;
+  const mylist = props.lister;
   
   // props.set((prev) => {
   //   const mytempobj = {
@@ -12,7 +12,7 @@ function ListItems(props) {
   // });
   const myListitem = mylist.map((item) => {
     return (
-      <div key={item.key}>
+      <div key={item.key} id="box">
         <h1>
           {item.data},{item.title}
         </h1>

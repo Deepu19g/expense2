@@ -53,15 +53,8 @@ function App() {
     //const sum=0
     event.preventDefault();
 
-    //const mytemplist = [...list, current];
-    // console.log(mytemplist);
-    // addtolist(mytemplist);
-
     console.log(selectedday);
-    //var tempsuper = {
-    //  ...superstate,
-    //  [new Date(selectedday).toDateString()]: mytemplist,
-    //};
+    
     console.log(tempsuper);
     var sum = 0,
       msum = 0;
@@ -84,6 +77,7 @@ function App() {
       };
       setsuperstate(tempsuper);
       localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
+      console.log(tempsuper);
       for (const [key, value] of Object.entries(Masterobject)) {
         if (key == new Date(selectedday).toDateString()) {
           for (const obk of value) {
@@ -138,24 +132,11 @@ function App() {
     }
   }
 
-  {
-    /*const tempmonth = localStorage.getItem(month);
-    if (tempmonth) {
-      localStorage.setItem(month.toString(), (+tempmonth + +tempo).toString());
-      setmtotal(+tempmonth + +tempo);
-    } else {
-      localStorage.setItem(month.toString(), tempo.toString());
-      setmtotal(+tempo);
-    }
-
-    console.log(tempmonth);
-    setamount("");
-  }*/
-  }
+  
   console.log(superstate);
   const nextclick = (data) => {
     setselectedday(data.toString());
-
+    var listed=[];
     console.log(data);
     var months = [
       "January",
@@ -183,10 +164,13 @@ function App() {
       for (const [key, value] of Object.entries(storeddata)) {
         console.log(data.toString());
         if (key == data.toDateString()) {
+          listed=value;
           for (const obj of value) {
             temp += Number(obj.data);
             // console.log(obj)
           }
+         
+          
         }
         if (new Date(key).getMonth() == data.getMonth()) {
           for (const obc of value) {
@@ -211,19 +195,15 @@ function App() {
       settt(0);
       setmtotal(0);
     }
-
-    //console.log(data.getMonth().toString())
-
-    //{
-    //  const presentmonth = localStorage.getItem(months[data.getMonth()]);
-    //console.log(presentmonth);
-    //if (presentmonth) {
-    //  setmtotal(presentmonth);
-    //} else {
-    //  setmtotal(0);
-
-    //  console.log("consider");
-    //}}
+    console.log(listed)
+        
+      
+     addtolist(listed)
+      
+    
+   
+    
+ 
   };
 
   return (
@@ -264,11 +244,10 @@ function App() {
 
         <button onClick={myFunction}>Add Expense</button>
       </div>
-
+    
       <ListItems
-        list={list}
-        set={setsuperstate}
-        selectedday={selectedday}
+        lister={list}
+        
       ></ListItems>
     </div>
   );
