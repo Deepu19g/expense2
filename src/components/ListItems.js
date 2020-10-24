@@ -12,10 +12,14 @@ function ListItems(props) {
   // });
   const myListitem = mylist.map((item) => {
     return (
-      <div key={item.key} id="box">
+      <div key={item.ide} id="box">
         <h1>
           {item.data},{item.title}
+        
         </h1>
+        <span >
+          <h2 onClick={()=>{props.delete(item.ide)}}>del</h2>
+        </span>
       </div>
     );
   });

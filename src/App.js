@@ -20,6 +20,7 @@ function App() {
   const [current, addtocurrent] = useState({
     data: " ",
     title: " ",
+    ide: " ",
   });
   const [superstate, setsuperstate] = useState({
     key: " ",
@@ -29,10 +30,10 @@ function App() {
   //useEffect(() => {
   //  addtolist([]);
   //}, [selectedday]);
-  //// useEffect(() => {
-  //  var Masterobject = JSON.parse(localStorage.getItem("Masterkey"));
-  //  setsuperstate(Masterobject);
-  //}, []);
+  useEffect(() => {
+    var Masterobject = JSON.parse(localStorage.getItem("Masterkey"));
+    setsuperstate(Masterobject);
+  }, []);
   function myFunction() {
     var element = document.getElementById("hidden");
     element.classList.toggle("mystyle");
@@ -47,6 +48,7 @@ function App() {
       data: e.target.value,
 
       title: name,
+      ide: Date.now(),
     });
   }
   function handlesubmit(event) {
@@ -54,7 +56,7 @@ function App() {
     event.preventDefault();
 
     console.log(selectedday);
-    
+
     console.log(tempsuper);
     var sum = 0,
       msum = 0;
@@ -67,7 +69,7 @@ function App() {
       addtolist(mytemplist);
       addtocurrent({
         data: " ",
-        key: " ",
+        ide: " ",
         title: " ",
       });
       console.log(mytemplist);
@@ -89,10 +91,11 @@ function App() {
           addtolist(mytemplist);
           addtocurrent({
             data: " ",
-            key: " ",
+            ide: " ",
             title: " ",
           });
           console.log(mytemplist);
+          console.log(superstate);
           var tempsuper = {
             ...superstate,
             [new Date(selectedday).toDateString()]: mytemplist,
@@ -119,7 +122,7 @@ function App() {
       addtolist(mytemplist);
       addtocurrent({
         data: " ",
-        key: " ",
+        ide: " ",
         title: " ",
       });
       console.log(mytemplist);
@@ -132,11 +135,10 @@ function App() {
     }
   }
 
-  
   console.log(superstate);
   const nextclick = (data) => {
     setselectedday(data.toString());
-    var listed=[];
+    var listed = [];
     console.log(data);
     var months = [
       "January",
@@ -164,13 +166,11 @@ function App() {
       for (const [key, value] of Object.entries(storeddata)) {
         console.log(data.toString());
         if (key == data.toDateString()) {
-          listed=value;
+          listed = value;
           for (const obj of value) {
             temp += Number(obj.data);
             // console.log(obj)
           }
-         
-          
         }
         if (new Date(key).getMonth() == data.getMonth()) {
           for (const obc of value) {
@@ -195,16 +195,45 @@ function App() {
       settt(0);
       setmtotal(0);
     }
-    console.log(listed)
-        
-      
-     addtolist(listed)
-      
-    
-   
-    
- 
+    console.log(listed);
+
+    addtolist(listed);
   };
+  var teste;
+  var tesum=0;
+  var temsum=0;
+  var parse;
+  function deleteitem(dat) {
+    teste = list.filter((item) => item.ide != dat);
+    console.log(teste)
+    addtolist(teste);
+    var temppsuper = {
+      ...superstate,
+      [new Date(selectedday).toDateString()]: teste,
+    };
+    setsuperstate(temppsuper);
+    
+    for (const obced of teste) {
+      console.log(obced)
+      //console.log( typeof (obce.data) )     
+      tesum += Number( obced.data)
+      
+    }
+    console.log(tesum)
+    settt(tesum);
+    
+    for (const [key, value] of Object.entries(temppsuper)) {
+      if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
+        for (const obak of value) {
+          temsum += Number(obak.data);
+          // console.log(obj);
+        }
+      }
+    }
+    setmtotal(temsum)
+
+    localStorage.setItem("Masterkey", JSON.stringify(temppsuper));
+  }
 
   return (
     <div className="App">
@@ -244,11 +273,8 @@ function App() {
 
         <button onClick={myFunction}>Add Expense</button>
       </div>
-    
-      <ListItems
-        lister={list}
-        
-      ></ListItems>
+
+      <ListItems lister={list} delete={deleteitem}></ListItems>
     </div>
   );
 }
