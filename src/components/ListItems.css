@@ -2,4 +2,42 @@
     background-color: white;
     margin-right: 30%;
     margin-left: 30%;
+    width: 500px;
+    border-radius: 10px;
+    height: 70px;
+}
+  h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-align: left;
+} 
+p{
+    margin-left: -60%;
+    margin-top: 20px;
+    padding-top: 20px;
+    position: relative;
+    font-weight: 700;
+    font-size: x-large;
+}
+#box p span{
+    /* margin-right: 40px; */
+    text-align: right !important;
+    position: absolute;
+    
+    right: 30px;
+}
+
+#disp{
+    margin-left: 5%;
+}
+#box:hover{
+    transform: scale(1.1); 
+}
+#box p span:hover{
+    transform: scale(1.4); 
+}
+input[type="text"] {
+   
+    height: 30px;
 }

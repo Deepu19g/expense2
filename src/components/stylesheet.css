@@ -5,8 +5,9 @@
    }
 .mystyle{
     display: block;
-    
-    
+    background-blend-mode: lighten;
+   visibility: visible;
+
 }
 
 .calender {
@@ -62,4 +63,7 @@ label{
 }
 #output{
     background-color: white;
+}
+.active{
+filter: blur(20px);
 }

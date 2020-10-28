@@ -17,6 +17,7 @@ export default class Calendar2 extends React.Component {
     });
     console.log(day.toLocaleDateString())
     alert("working")
+    console.log(selected)
   }
 
   render() {
@@ -25,14 +26,17 @@ export default class Calendar2 extends React.Component {
         <DayPicker
           selectedDays={this.state.selectedDay}
           onDayClick={this.props.nextclick} 
+         
+
         />
+      
         {/*<p>
           {this.state.selectedDay
             ? this.state.selectedDay.toLocaleDateString()
             : 'Please select a day 👻'}
           </p>
           */}
-          
+        
         
       </div>
     );

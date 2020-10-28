@@ -5,9 +5,12 @@ import "./App.css";
 import Calendar2 from "./components/Calendar2";
 //import Calendar from './components/Calendar';
 import { Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.css";
+//import "bootstrap/dist/css/bootstrap.css";
 import "./components/stylesheet.css";
 import ListItems from "./components/ListItems";
+import {library} from '@fortawesome/fontawesome-svg-core'
+import {faTrash} from '@fortawesome/free-solid-svg-icons'
+library.add(faTrash);
 
 function App() {
   const [mtotal, setmtotal] = useState(0);
@@ -31,13 +34,41 @@ function App() {
   //  addtolist([]);
   //}, [selectedday]);
   useEffect(() => {
+    var teksum = 0;
+    var tekmsum = 0;
+    var list2 = [];
     var Masterobject = JSON.parse(localStorage.getItem("Masterkey"));
     setsuperstate(Masterobject);
+    if (Masterobject) {
+      for (const [key, value] of Object.entries(Masterobject)) {
+        if (key == new Date().toDateString()) {
+     
+          addtolist(value)
+          for (const prim of value) {
+            console.log(prim);
+            teksum += Number(prim.data);
+          }
+        }
+        if (new Date(key).getMonth() == new Date().getMonth()) {
+          for (const oback of value) {
+            tekmsum += Number(oback.data);
+          }
+        }
+      }
+      //console.log(list2);
+      settt(teksum);
+      setmtotal(tekmsum);
+      
+    }
   }, []);
   function myFunction() {
     var element = document.getElementById("hidden");
     element.classList.toggle("mystyle");
+    var blur=document.getElementById("blur");
+    blur.classList.toggle("active")
+    
   }
+
   var temp = 0;
 
   var names = [];
@@ -126,6 +157,7 @@ function App() {
         title: " ",
       });
       console.log(mytemplist);
+
       var tempsuper = {
         ...superstate,
         [new Date(selectedday).toDateString()]: mytemplist,
@@ -133,6 +165,8 @@ function App() {
       setsuperstate(tempsuper);
       localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
     }
+    setname(" ")
+    setamount(0)
   }
 
   console.log(superstate);
@@ -200,28 +234,27 @@ function App() {
     addtolist(listed);
   };
   var teste;
-  var tesum=0;
-  var temsum=0;
+  var tesum = 0;
+  var temsum = 0;
   var parse;
   function deleteitem(dat) {
     teste = list.filter((item) => item.ide != dat);
-    console.log(teste)
+    console.log(teste);
     addtolist(teste);
     var temppsuper = {
       ...superstate,
       [new Date(selectedday).toDateString()]: teste,
     };
     setsuperstate(temppsuper);
-    
+
     for (const obced of teste) {
-      console.log(obced)
-      //console.log( typeof (obce.data) )     
-      tesum += Number( obced.data)
-      
+      console.log(obced);
+      //console.log( typeof (obce.data) )
+      tesum += Number(obced.data);
     }
-    console.log(tesum)
+    console.log(tesum);
     settt(tesum);
-    
+
     for (const [key, value] of Object.entries(temppsuper)) {
       if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
         for (const obak of value) {
@@ -230,13 +263,13 @@ function App() {
         }
       }
     }
-    setmtotal(temsum)
+    setmtotal(temsum);
 
     localStorage.setItem("Masterkey", JSON.stringify(temppsuper));
   }
 
   return (
-    <div className="App">
+    <div className="App" id="blur">
       <div id="hidden" className="box hidden">
         <form onSubmit={handlesubmit}>
           <label>Name:</label>
@@ -266,8 +299,8 @@ function App() {
       {/*<Calendar nextday={nextday} storedNames={storedNames}></Calendar>*/}
 
       <div id="disp">
-        <h2>Month total -{mtotal}</h2>
-        <h2>Todays total-{tt}</h2>
+        <h1>Month total -{mtotal}</h1>
+        <h1>Todays total-{tt}</h1>
 
         {/* <button onClick={myFunction}>Add Expense</button>*/}
 
