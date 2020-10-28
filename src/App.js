@@ -5,11 +5,12 @@ import "./App.css";
 import Calendar2 from "./components/Calendar2";
 //import Calendar from './components/Calendar';
 import { Button } from "react-bootstrap";
-//import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.css";
 import "./components/stylesheet.css";
 import ListItems from "./components/ListItems";
-import {library} from '@fortawesome/fontawesome-svg-core'
-import {faTrash} from '@fortawesome/free-solid-svg-icons'
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
+
 library.add(faTrash);
 
 function App() {
@@ -42,8 +43,7 @@ function App() {
     if (Masterobject) {
       for (const [key, value] of Object.entries(Masterobject)) {
         if (key == new Date().toDateString()) {
-     
-          addtolist(value)
+          addtolist(value);
           for (const prim of value) {
             console.log(prim);
             teksum += Number(prim.data);
@@ -58,15 +58,13 @@ function App() {
       //console.log(list2);
       settt(teksum);
       setmtotal(tekmsum);
-      
     }
   }, []);
   function myFunction() {
     var element = document.getElementById("hidden");
     element.classList.toggle("mystyle");
-    var blur=document.getElementById("blur");
-    blur.classList.toggle("active")
-    
+    var blur = document.getElementById("rest");
+    blur.classList.toggle("active");
   }
 
   var temp = 0;
@@ -165,8 +163,8 @@ function App() {
       setsuperstate(tempsuper);
       localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
     }
-    setname(" ")
-    setamount(0)
+    setname(" ");
+    setamount(0);
   }
 
   console.log(superstate);
@@ -269,45 +267,53 @@ function App() {
   }
 
   return (
-    <div className="App" id="blur">
-      <div id="hidden" className="box hidden">
-        <form onSubmit={handlesubmit}>
-          <label>Name:</label>
-          <input
-            type="text"
-            value={name}
-            id={name}
-            onChange={(e) => setname(e.target.value)}
-          ></input>
-          <br></br>
-          <br></br>
-          <label>Amount:</label>
-          <input
-            type="text"
-            value={amount}
-            id={amount}
-            onChange={handleinput}
-          ></input>
-          <br></br>
-          <input type="submit" onClick={myFunction}></input>
-        </form>
+    <div className="App">
+      <div id="mainbox">
+        <div id="hidden" className="box hidden">
+          <form onSubmit={handlesubmit}>
+            <label>Name:</label>
+            <input
+              type="text"
+              value={name}
+              id={name}
+              onChange={(e) => setname(e.target.value)}
+            ></input>
+            <br></br>
+            <br></br>
+            <label>Amount:</label>
+            <input
+              type="text"
+              value={amount}
+              id={amount}
+              onChange={handleinput}
+            ></input>
+            <br></br>
+            <p>
+            <input type="submit" onClick={myFunction}></input>
+            <Button variant="danger" size="lg"  onClick={myFunction}>close</Button>{' '}
+            </p> 
+            
+          </form>
+        </div>
       </div>
+      <div id="rest">
+        <div className="calender">
+          <Calendar2 nextclick={nextclick}></Calendar2>
+        </div>
+        {/*<Calendar nextday={nextday} storedNames={storedNames}></Calendar>*/}
 
-      <div className="calender">
-        <Calendar2 nextclick={nextclick}></Calendar2>
+        <div id="disp">
+          <h1>Month total -{mtotal}</h1>
+          <h1>Todays total-{tt}</h1>
+
+          {/* <button onClick={myFunction}>Add Expense</button>*/}
+
+         {/*<button onClick={myFunction}>Add Expense</button>*/}
+          <Button variant="dark" size="lg" onClick={myFunction}>Add Expense</Button>{' '}
+        </div>
+
+        <ListItems lister={list} delete={deleteitem}></ListItems>
       </div>
-      {/*<Calendar nextday={nextday} storedNames={storedNames}></Calendar>*/}
-
-      <div id="disp">
-        <h1>Month total -{mtotal}</h1>
-        <h1>Todays total-{tt}</h1>
-
-        {/* <button onClick={myFunction}>Add Expense</button>*/}
-
-        <button onClick={myFunction}>Add Expense</button>
-      </div>
-
-      <ListItems lister={list} delete={deleteitem}></ListItems>
     </div>
   );
 }

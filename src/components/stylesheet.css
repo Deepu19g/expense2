@@ -6,7 +6,7 @@
 .mystyle{
     display: block;
     background-blend-mode: lighten;
-   visibility: visible;
+   
 
 }
 
@@ -65,5 +65,17 @@ label{
     background-color: white;
 }
 .active{
-filter: blur(20px);
+   
+    filter: blur(5px);
+}
+.btn-danger {
+    
+    position: absolute;
+    right: 100px;
+}
+ 
+  [type="submit"]:not(:disabled) {
+    cursor: pointer;
+    position: absolute;
+    right: 250px;
 }
