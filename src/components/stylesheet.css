@@ -29,11 +29,11 @@ body{
     color:black !important;
 }
 input[type="text"]{
-    border-radius: 25px;
+    border-radius: 5px;
     border: 2px solid #609;
     padding: 10px; 
     width: 200px;
-    height: 45px; 
+    height: 35px; 
    
 }
 .box {
@@ -44,15 +44,15 @@ input[type="text"]{
     height: 450px;
     z-index: 2;
     position: absolute;
-    border-radius: 15%;
+    border-radius: 10%;
 }
 button{
-   margin-left: -75%;
+   margin-left: 3% !important;
 }
 #disp {
     position: absolute;
     margin-top: 28%;
-    margin-left: 10%;
+    margin-left: 3%;
 }
 form{
     margin-top: 35%;
@@ -71,11 +71,45 @@ label{
 .btn-danger {
     
     position: absolute;
-    right: 100px;
+    right: 150px;
 }
  
   [type="submit"]:not(:disabled) {
     cursor: pointer;
     position: absolute;
     right: 250px;
+}
+h1, .h1 {
+    font-size: 2.5rem;
+}
+
+#rest{
+    position: inherit;
+}
+.mybox{
+    position: absolute;
+    margin-left: 30%;
+}
+#box{
+    background-color: white;
+    margin-right: 30%;
+    
+    width: 500px;
+    border-radius: 10px;
+    height: 70px;
+}
+@media (min-width:350px)and (max-width:500px){
+    #disp{
+        margin-top: 88%;
+    }
+    h1, .h1 {
+        font-size: 1.5rem;
+    }
+    .mybox{
+        margin-top: 130%;
+        margin-left: 10% ;
+    }
+    #box{
+        width: 300px;
+    }
 }

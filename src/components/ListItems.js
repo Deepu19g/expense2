@@ -13,6 +13,7 @@ function ListItems(props) {
   // });
   const myListitem = mylist.map((item) => {
     return (
+      
       <div key={item.ide} id="box">
         <p>
           {item.data},{item.title}
@@ -28,7 +29,7 @@ function ListItems(props) {
   const mytemp = [...mylist];
 
 
-  return <div>{myListitem}</div>;
+  return <div className="mybox">{myListitem}</div>;
 }
 
 export default ListItems;
