@@ -271,7 +271,7 @@ function App() {
       <div id="mainbox">
         <div id="hidden" className="box hidden">
           <form onSubmit={handlesubmit}>
-            <label>Name:</label>
+            <h2>Name:</h2>
             <input
               type="text"
               value={name}
@@ -280,7 +280,7 @@ function App() {
             ></input>
             <br></br>
             <br></br>
-            <label>Amount:</label>
+            <h2>Amount:</h2>
             <input
               type="text"
               value={amount}

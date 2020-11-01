@@ -11,14 +11,14 @@
 }
 
 .calender {
-    margin-left: 5%;
+    margin-left: 70px;
     transform: scaleX(1.5);
     margin-top: 5%;
     z-index: 1;
     position: absolute;
 }
 h2{
-    margin-left: -75%;
+    margin-left: -5%;
     margin-top: 3%;
     
 }
@@ -37,7 +37,7 @@ input[type="text"]{
    
 }
 .box {
-    margin-left: 40%;
+    margin-left: 32%;
     margin-top: 4%;
     background-color: white;
     width: 500px;
@@ -55,7 +55,7 @@ button{
     margin-left: 3%;
 }
 form{
-    margin-top: 35%;
+    margin-top: 20%;
 }
 
 label{
@@ -98,18 +98,55 @@ h1, .h1 {
     border-radius: 10px;
     height: 70px;
 }
+.btn-dark{
+    margin-top: 10%;
+}
 @media (min-width:350px)and (max-width:500px){
-    #disp{
-        margin-top: 88%;
+    #disp {
+        margin-top: 420px;
+        margin-left: 90px;
     }
     h1, .h1 {
         font-size: 1.5rem;
     }
     .mybox{
-        margin-top: 130%;
+        margin-top: 580px;
         margin-left: 10% ;
     }
     #box{
         width: 300px;
+    }
+    .calender{
+        margin-left: 45px;
+        margin-top: 20%;
+        transform: scaleX(1.2);
+    }
+    .box {
+        margin-left: 10%;
+        margin-top: 40%;
+        background-color: white;
+        width: 300px;
+        height: 350px;
+        z-index: 2;
+        position: absolute;
+        border-radius: 5%;
+    }
+    [type="submit"]:not(:disabled) {
+        cursor: pointer;
+        position: absolute;
+        left: 245px;
+    }
+    .btn-danger{
+        right: 60px;
+    }
+    form{
+        margin-top: 20%;
+    }
+    h2{
+        margin-top: 0px;
+        margin-left: 5%;
+    }
+    .btn-dark{
+        margin-top: 14%;
     }
 }
