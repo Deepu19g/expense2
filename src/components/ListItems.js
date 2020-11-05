@@ -16,7 +16,7 @@ function ListItems(props) {
       
       <div key={item.ide} id="box">
         <p>
-          {item.data},{item.title}
+          {item.data} Rs,{item.title}
           <span >
           
           <FontAwesomeIcon className="faicons" icon="trash" id="faicons" onClick={()=>{props.delete(item.ide)}}></FontAwesomeIcon>
@@ -27,9 +27,17 @@ function ListItems(props) {
     );
   });
   const mytemp = [...mylist];
+  console.log(myListitem)
+  if(myListitem.length != 0){
+   
+    return <div className="mybox">{myListitem}</div>;
+  }
+  else{
+    console.log("no expense")
+    return <h2>No expense recorded</h2>
 
-
-  return <div className="mybox">{myListitem}</div>;
+  }
+  
 }
 
 export default ListItems;

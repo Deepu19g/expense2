@@ -101,7 +101,7 @@ h1, .h1 {
 .btn-dark{
     margin-top: 10%;
 }
-@media (min-width:350px)and (max-width:500px){
+@media (min-width:320px)and (max-width:500px){
     #disp {
         margin-top: 420px;
         margin-left: 90px;
@@ -149,4 +149,60 @@ h1, .h1 {
     .btn-dark{
         margin-top: 14%;
     }
+}
+@media (min-width:380px) and (max-width:400px){
+    .calender{
+        margin-left: 55px;
+    }
+    .mybox{
+        margin-left: 11%;
+    }
+}
+@media (min-width:400px) and (max-width:500px){
+.calender{
+    transform: scaleX(1.4);
+    margin-left: 65px;
+}
+h1{
+    font-size: 1.9rem;
+}
+#disp{
+    margin-left: 100px;
+}
+.mybox{
+    margin-top: 600px;
+    margin-left: 14%;
+}
+}
+@media (min-width:475px) and (max-width:500px){
+    .calender{
+        transform: scaleX(1.5);
+        margin-left: 95px;
+    }
+    #box{
+        width: 350px;
+    }
+    #disp{
+        margin-left: 120px;
+    }
+    h1{
+        font-size: 2.2rem;
+    }
+    .mybox{
+        margin-top: 620px;
+    }
+}
+@media (max-width:350px){
+    .calender{
+        margin-left: 30px;
+        transform: scaleX(1.1);
+    }
+
+}
+@media (min-width:750px) and (max-width:850px){
+    .mybox{
+        margin-left: 20%;
+        margin-top: 80%;
+    }
+
 }

@@ -65,14 +65,23 @@ function App() {
     element.classList.toggle("mystyle");
     var blur = document.getElementById("rest");
     blur.classList.toggle("active");
+    
   }
-
+  function myFunction2() {
+    var element = document.getElementById("hidden");
+    element.classList.toggle("mystyle");
+    var blur = document.getElementById("rest");
+    blur.classList.toggle("active");
+    setname('');
+    setamount(0);
+  }
   var temp = 0;
 
   var names = [];
 
   function handleinput(e) {
     setamount(e.target.value);
+    console.log(e.target.value)
     addtocurrent({
       data: e.target.value,
 
@@ -115,6 +124,7 @@ function App() {
             sum += Number(obk.data);
           }
           sum += +amount;
+          console.log(amount);
           settt(sum);
           mytemplist = [...value, current];
           addtolist(mytemplist);
@@ -169,25 +179,11 @@ function App() {
 
   console.log(superstate);
   const nextclick = (data) => {
+    
     setselectedday(data.toString());
     var listed = [];
-    console.log(data);
-    var months = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
-    ];
-    //console.log(selectedday.toString());
-    //setmonth(months[data.getMonth()]);
+    
+    
 
     const storeddata = JSON.parse(localStorage.getItem("Masterkey"));
 
@@ -226,6 +222,7 @@ function App() {
     } else {
       settt(0);
       setmtotal(0);
+      
     }
     console.log(listed);
 
@@ -290,7 +287,7 @@ function App() {
             <br></br>
             <p>
             <input type="submit" onClick={myFunction}></input>
-            <Button variant="danger" size="lg"  onClick={myFunction}>close</Button>{' '}
+            <Button variant="danger" size="lg"  onClick={myFunction2}>close</Button>{' '}
             </p> 
             
           </form>
@@ -303,8 +300,8 @@ function App() {
         {/*<Calendar nextday={nextday} storedNames={storedNames}></Calendar>*/}
 
         <div id="disp">
-          <h1>Month total -{mtotal}</h1>
-          <h1>Todays total-{tt}</h1>
+          <h1>Month total :{mtotal} Rs</h1>
+          <h1>Todays total:{tt} Rs</h1>
 
           {/* <button onClick={myFunction}>Add Expense</button>*/}
 
