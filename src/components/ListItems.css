@@ -5,14 +5,7 @@
     line-height: 1.2;
     text-align: left;
 } 
-p{
-    margin-left: -60%;
-    margin-top: 20px;
-    padding-top: 20px;
-    position: relative;
-    font-weight: 700;
-    font-size: x-large;
-}
+
 #box p span{
     /* margin-right: 40px; */
     text-align: right !important;
