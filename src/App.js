@@ -65,14 +65,13 @@ function App() {
     element.classList.toggle("mystyle");
     var blur = document.getElementById("rest");
     blur.classList.toggle("active");
-    
   }
   function myFunction2() {
     var element = document.getElementById("hidden");
     element.classList.toggle("mystyle");
     var blur = document.getElementById("rest");
     blur.classList.toggle("active");
-    setname('');
+    setname("");
     setamount(0);
   }
   var temp = 0;
@@ -81,7 +80,7 @@ function App() {
 
   function handleinput(e) {
     setamount(e.target.value);
-    console.log(e.target.value)
+    console.log(e.target.value);
     addtocurrent({
       data: e.target.value,
 
@@ -179,11 +178,8 @@ function App() {
 
   console.log(superstate);
   const nextclick = (data) => {
-    
     setselectedday(data.toString());
     var listed = [];
-    
-    
 
     const storeddata = JSON.parse(localStorage.getItem("Masterkey"));
 
@@ -222,7 +218,6 @@ function App() {
     } else {
       settt(0);
       setmtotal(0);
-      
     }
     console.log(listed);
 
@@ -265,6 +260,24 @@ function App() {
 
   return (
     <div className="App">
+      <div id="rest">
+        <div className="calender">
+          <Calendar2 nextclick={nextclick}></Calendar2>
+        </div>
+        {/*<Calendar nextday={nextday} storedNames={storedNames}></Calendar>*/}
+
+        <div id="disp">
+          <h1>Month total :{mtotal} Rs</h1>
+          <h1>Todays total:{tt} Rs</h1>
+          {/* <button onClick={myFunction}>Add Expense</button>*/}
+          {/*<button onClick={myFunction}>Add Expense</button>*/}
+          <Button variant="dark" size="lg" onClick={myFunction}>
+            Add Expense
+          </Button>{" "}
+        </div>
+
+        <ListItems lister={list} delete={deleteitem}></ListItems>
+      </div>
       <div id="mainbox">
         <div id="hidden" className="box hidden">
           <form onSubmit={handlesubmit}>
@@ -286,30 +299,13 @@ function App() {
             ></input>
             <br></br>
             <p>
-            <input type="submit" onClick={myFunction}></input>
-            <Button variant="danger" size="lg"  onClick={myFunction2}>close</Button>{' '}
-            </p> 
-            
+              <input type="submit" onClick={myFunction}></input>
+              <Button variant="danger" size="lg" onClick={myFunction2}>
+                close
+              </Button>{" "}
+            </p>
           </form>
         </div>
-      </div>
-      <div id="rest">
-        <div className="calender">
-          <Calendar2 nextclick={nextclick}></Calendar2>
-        </div>
-        {/*<Calendar nextday={nextday} storedNames={storedNames}></Calendar>*/}
-
-        <div id="disp">
-          <h1>Month total :{mtotal} Rs</h1>
-          <h1>Todays total:{tt} Rs</h1>
-
-          {/* <button onClick={myFunction}>Add Expense</button>*/}
-
-         {/*<button onClick={myFunction}>Add Expense</button>*/}
-          <Button variant="dark" size="lg" onClick={myFunction}>Add Expense</Button>{' '}
-        </div>
-
-        <ListItems lister={list} delete={deleteitem}></ListItems>
       </div>
     </div>
   );
