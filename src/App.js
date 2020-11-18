@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import logo from "./logo.svg";
 import "./App.css";
-
+import Modal from "react-bootstrap/Modal";
 import Calendar2 from "./components/Calendar2";
 //import Calendar from './components/Calendar';
 import { Button } from "react-bootstrap";
@@ -21,6 +21,7 @@ function App() {
   const [selectedday, setselectedday] = useState(new Date().toString());
   const [month, setmonth] = useState(new Date());
   const [list, addtolist] = useState([]);
+  const [truth, settruth] = useState(false);
   const [current, addtocurrent] = useState({
     data: " ",
     title: " ",
@@ -61,19 +62,27 @@ function App() {
     }
   }, []);
   function myFunction() {
-    var element = document.getElementById("hidden");
-    element.classList.toggle("mystyle");
-    var blur = document.getElementById("rest");
-    blur.classList.toggle("active");
+    //var element = document.getElementById("hidden");
+    //element.classList.toggle("mystyle");
+   // var blu = document.getElementById("rest");
+    //blu.classList.toggle("active");
+    
+      
+    settruth(true);
+    
+    
   }
   function myFunction2() {
-    var element = document.getElementById("hidden");
-    element.classList.toggle("mystyle");
-    var blur = document.getElementById("rest");
-    blur.classList.toggle("active");
+    //var element = document.getElementById("hidden");
+    //element.classList.toggle("mystyle");
+    //var blu = document.getElementById("rest");
+    //blu.classList.toggle("active");
     setname("");
     setamount(0);
+    
+    settruth(false);
   }
+
   var temp = 0;
 
   var names = [];
@@ -278,35 +287,37 @@ function App() {
 
         <ListItems lister={list} delete={deleteitem}></ListItems>
       </div>
-      <div id="mainbox">
-        <div id="hidden" className="box hidden">
-          <form onSubmit={handlesubmit}>
-            <h2 id="val1">Name:</h2>
-            <input
-              type="text"
-              value={name}
-              id={name}
-              onChange={(e) => setname(e.target.value)}
-            ></input>
-            <br></br>
-            <br></br>
-            <h2 id="val2">Amount:</h2>
-            <input
-              type="text"
-              value={amount}
-              id={amount}
-              onChange={handleinput}
-            ></input>
-            <br></br>
-            <p>
-              <input type="submit" onClick={myFunction}></input>
-              <Button variant="danger" size="lg" onClick={myFunction2}>
-                close
-              </Button>{" "}
-            </p>
-          </form>
-        </div>
-      </div>
+      <Modal show={truth} onRequestClose={myFunction2}>
+        <Modal.Body>
+          
+            <form onSubmit={handlesubmit}>
+              <h2 id="val1">Name:</h2>
+              <input
+                type="text"
+                value={name}
+                id={name}
+                onChange={(e) => setname(e.target.value)}
+              ></input>
+              <br></br>
+              <br></br>
+              <h2 id="val2">Amount:</h2>
+              <input
+                type="text"
+                value={amount}
+                id={amount}
+                onChange={handleinput}
+              ></input>
+              <br></br>
+              <p>
+                <input type="submit" onClick={myFunction}></input>
+                <Button variant="danger" size="lg" onClick={myFunction2}>
+                  close
+                </Button>{" "}
+              </p>
+            </form>
+          
+        </Modal.Body>
+      </Modal>
     </div>
   );
 }
