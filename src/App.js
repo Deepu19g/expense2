@@ -183,6 +183,7 @@ function App() {
     }
     setname(" ");
     setamount(0);
+    settruth(false);
   }
 
   console.log(superstate);
@@ -280,7 +281,7 @@ function App() {
           <h1>Todays total:{tt} Rs</h1>
           {/* <button onClick={myFunction}>Add Expense</button>*/}
           {/*<button onClick={myFunction}>Add Expense</button>*/}
-          <Button variant="dark" size="lg" onClick={myFunction}>
+          <Button variant="dark" size="lg" id="add"onClick={myFunction}>
             Add Expense
           </Button>{" "}
         </div>
@@ -305,6 +306,7 @@ function App() {
                 type="text"
                 value={amount}
                 id={amount}
+                className="second"
                 onChange={handleinput}
               ></input>
               <br></br>

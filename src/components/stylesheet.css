@@ -1,4 +1,3 @@
-
 /*
   .mystyle {
   display: block;
@@ -11,7 +10,7 @@ h2 {
 }
 .calender {
   left: 90px;
-  transform: scaleX(1.5);
+  transform: scaleX(1.4);
   top: 5%;
   z-index: 1;
   position: absolute;
@@ -33,7 +32,10 @@ input[type="text"] {
   margin-left: 120px;
 }
 .modal-content {
-  border-radius: 20px ;
+  border-radius: 20px;
+}
+.modal {
+top: 60px;
 }
 .modal-body {
   left: 0%;
@@ -99,13 +101,13 @@ h1,
 .btn-dark {
   margin-top: 10%;
 }
-p{
-    left: -24%;
-    margin-top: 20px;
-    padding-top: 20px;
-    position: relative;
-    font-weight: 700;
-    font-size: x-large;
+p {
+  left: -24%;
+  margin-top: 20px;
+  padding-top: 20px;
+  position: relative;
+  font-weight: 700;
+  font-size: x-large;
 }
 #val2 {
   top: 190px;
@@ -116,16 +118,19 @@ p{
 }
 
 @media (min-width: 320px) and (max-width: 500px) {
+  .modal {
+    left: 15px;
+  }
   #disp {
-    margin-top: 420px;
-    left: 48px;
+    top: 340px;
+    left: 60px;
   }
   h1,
   .h1 {
     font-size: 1.8rem;
   }
   .mybox {
-    margin-top: 600px;
+    top: 540px;
     left: 10%;
   }
   #box {
@@ -136,15 +141,14 @@ p{
     top: 5%;
     transform: scaleX(1.2);
   }
-  .box {
-    left: 10%;
-    top: 20%;
-    background-color: white;
-    width: 300px;
-    height: 350px;
-    z-index: 2;
-    position: absolute;
-    border-radius: 5%;
+  .modal-body {
+    top: 0%;
+  }
+  .modal-content {
+    border-radius: 20px;
+    top: 60px;
+    height: 400px;
+    width: 318px;
   }
   [type="submit"]:not(:disabled) {
     cursor: pointer;
@@ -167,183 +171,338 @@ p{
     margin-top: 14%;
   }
   #null {
-    margin-top: 520px;
+    top: 550px;
     position: absolute;
     font-size: 1.7rem;
-    left: 40px;
+    left: 46px;
   }
-  p{
-      left: -12% ;
-      font-size: 1.3rem;
+  p {
+    left: -12%;
+    font-size: 1.3rem;
   }
   #val1 {
-    top: 40px;
+    top: 55px;
     left: 85px;
   }
   #val2 {
-    top: 140px;
+    top: 155px;
     left: 75px;
   }
   input[type="text"] {
-   height: 35px;
-   margin-top: 35px;
+    height: 35px;
+    margin-top: 35px;
+    margin-left: 50px;
   }
 }
 @media (min-width: 380px) and (max-width: 400px) {
   .calender {
-    margin-left: 55px;
+    left: 55px;
   }
   .mybox {
-    margin-left: 11%;
+    left: 11%;
+  }
+  .modal-dialog {
+   left: 13px;
   }
 }
 @media (min-width: 400px) and (max-width: 500px) {
   .calender {
     transform: scaleX(1.4);
-    margin-left: 65px;
+    left: 65px;
   }
   h1 {
     font-size: 1.9rem;
   }
   #disp {
     left: 68px;
+    top:400px;
   }
   .mybox {
-    margin-top: 600px;
+    top: 610px;
     left: 14%;
   }
-  #null{
-      margin-left: 80px;
-      margin-top: 530px;
+  #null {
+    left: 60px;
+    top: 600px;
+  }
+  .modal-content{
+    left: 25px;
+  }
+  .modal{
+    top:100px
   }
 }
 @media (min-width: 475px) and (max-width: 500px) {
   .calender {
-    transform: scaleX(1.5);
-    margin-left: 95px;
+    transform: scaleX(1.4);
+    left: 95px;
   }
   #box {
     width: 370px;
   }
   #disp {
-    margin-left: 90px;
+    left: 90px;
+    top: 380px;
   }
   h1 {
     font-size: 2.2rem;
   }
   .mybox {
-    margin-top: 620px;
-    margin-left: 55px;
-  
+    top: 620px;
+    left: 58px;
   }
-  #null{
-   margin-left: 100px;
+  #null
+   {
+     left: 50px;
+     top: 610px;
+     font-size: 35px;
   }
- 
+  .modal-content {
+    left: 20px;
+    width: 400px;
+    top: 170px;
+  }
+  #val1{
+    left: 115px;
+  }
+  input[type="text"] {
+    margin-left: 75px;
+  }
+  #val2 {
+    top: 165px;
+    left: 105px;
+  }
+  [type="submit"]:not(:disabled) {
+   left: 228px !important;
+  }
+  .btn-danger{
+    left: 120px;
+    
+  }
 }
 @media (max-width: 350px) {
   .calender {
-    margin-left: 22px;
+    left: 22px;
     transform: scaleX(1.1);
   }
   #disp {
-    margin-top: 395px;
-    margin-left: 40px;
+    top: 395px;
+    left: 37px;
   }
-  #box{
+  #box {
     width: 250px;
   }
-  #null{
+  #null {
     font-size: 1.4rem;
-    margin-top: 530px;
+    top: 595px;
   }
-  .mybox{
-    margin-left: 11%;
+  .mybox {
+    left: 11%;
+    top: 585px;
   }
+  #add{
+    margin-left: 0px !important;
+  }
+  .modal-content{
+    width: 270px;
+    left: 5px;
+    top: 10px;
+  }
+  input[type="text"] {
+    margin-top: 35px;
+    margin-left: 20px;
 }
-
-@media (min-width:500px) and (max-width:640px){
-  
-  .calender {
-    left: 154px;
-    transform: scale(1.68);
-    margin-top: 20%;
-    
+.second {
+  margin-top: 50px !important;
 }
-.btn:not(:disabled):not(.disabled) {
-  cursor: pointer;
-  font-size: 30px;
-}
-#null {
-  left: 22%;
-  margin-top: 740px;
-  position: absolute;
-  font-size: 2.4rem;
-}
-#disp {
-    position: absolute;
-    margin-top: 600px;
-    left: 18%;
-}
-.mybox{
-  margin-top: 855px;
-  left: 9%;
-}
-.box {
-  left: 9%;
-  top: 30%;
-  background-color: white;
-  width: 500px;
-  height: 450px;
-  z-index: 2;
-  position: absolute;
-  border-radius: 37px;
-}
-#box p span{
-  right: -40px !important;
+[type="submit"]:not(:disabled) {
+  left: 165px;
 }
 .btn-danger{
-  height: 50px;
-  width: 94px;
+  left: 65px;
+}
+.modal{
+  top: 25px;
+  left: 10px;
 }
 }
-@media (min-width:650px) and (max-width:1100px){
-  #disp{
-    top:18%;
-    margin-left: 50px;
+
+@media (min-width: 500px) and (max-width: 640px) {
+  #box {
+    width: 410px;
   }
-  #null{
+  #add {
+    
+    height: 80px;
+    font-size: 30px;
+  }
+  .modal-body {
+    top: 0%;
+  }
+  .modal-dialog {
+    top: 10%;
+    width: 467px;
+    left: 5%;
+  }
+  .modal-content {
+    height: 500px;
+  }
+  .calender {
+    left: 134px;
+    transform: scale(1.68);
+    margin-top: 20%;
+  }
+  /*.btn:not(:disabled):not(.disabled) {
+    cursor: pointer;
+    font-size: 30px;
+  }*/
+  #null {
+    left: 19%;
+    margin-top: 740px;
     position: absolute;
-    margin-left: 53%;
+    font-size: 2.4rem;
   }
-  .calender{
-    transform: scaleX(1.3);
+  #disp {
+    position: absolute;
+    top: 600px;
+    left: 95px;
+  }
+  .mybox {
+    margin-top: 855px;
+    left: 12%;
+  }
+
+  #box p span {
+    right: -40px !important;
+  }
+  .btn-danger {
+    height: 65px;
+    width: 110px;
+    font-size: 34px;
+    left: 185px;
+  }
+  #val1,
+  #val2 {
+    font-size: 50px;
+    left: 156px;
+  }
+  #val2 {
+    top: 212px;
+  }
+  input[type="text"] {
+    width: 300px;
+    height: 45px;
+    margin-top: 50px;
+    margin-left: 65px;
+  }
+  .second {
+    margin-top: 60px !important;
+  }
+  [type="submit"]:not(:disabled) {
+   
+    right: -15px;
+    height: 65px;
+    font-size: 34px;
+}
+}
+@media (min-width: 650px) and (max-width: 1100px) {
+  .modal {
+    top: 310px;
+  }
+  .modal-content {
+    width: 610px;
+    left: 20px;
+  }
+  .modal-dialog {
+    max-width: 650px;
+  }
+  #disp {
+    top: 48%;
     left: 50px;
   }
-  h1, .h1 {
+  #null {
+    position: absolute;
+    left: 53%;
+  }
+  .calender {
+    transform: scaleX(1.1);
+    left: 30px;
+  }
+  h1,
+  .h1 {
     font-size: 2rem;
   }
   .mybox {
     left: 50%;
     margin-top: 7%;
   }
-  #box{
-    width:356px;
+  #box {
+    width: 356px;
   }
-  P{
+  P {
     left: -15%;
   }
+  form {
+    margin-top: 10%;
+    height: 300px;
 }
-@media (min-width:1000px) and (max-width:1200px){
+input[type="text"] {
+  
+  width: 300px;
+  height: 45px;
+  margin-top: 60px;
+
+}
+#val1 {
+  top: 60px;
+  left: 230px;
+  font-size: 45px;
+}
+#val2{
+  font-size: 45px;
+}
+
+.btn-danger {
+    position: absolute;
+    left: 230px;
+    height: 65px;
+    font-size: 35px;
+}
+[type="submit"]:not(:disabled) {
+  right: 60px;
+  height: 63px;
+  font-size: 35px;
+}
+.DayPicker-Months {
+  font-size: 20px;
+}
+}
+@media (min-width:590px) and (max-width:640px){
+  .calender{
+    left: 164px;
+  }
   #disp{
-    top: 10%;
+    left: 125px;
   }
   .mybox{
-    left: 39%;
+    left: 17%;
+  }
+  .modal-dialog{
+    left: 0%;
+  }
+  #null {
+    left: 22%;
   }
 }
-@media (min-width:595px ) and (max-width:640px){
-  .mybox{
-    left: 8%;
+@media (min-width: 1000px) and (max-width: 1200px) {
+  #disp {
+    top: 38%;
+    left: 85px;
+  }
+  .mybox {
+    left: 54%;
+  }
+  .calender{
+    left: 60px;
   }
 }
