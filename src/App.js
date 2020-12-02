@@ -5,9 +5,13 @@ import Modal from "react-bootstrap/Modal";
 import Calendar2 from "./components/Calendar2";
 //import Calendar from './components/Calendar';
 import { Button } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.css";
+//import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import "./components/stylesheet.css";
 import ListItems from "./components/ListItems";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
@@ -64,13 +68,10 @@ function App() {
   function myFunction() {
     //var element = document.getElementById("hidden");
     //element.classList.toggle("mystyle");
-   // var blu = document.getElementById("rest");
+    // var blu = document.getElementById("rest");
     //blu.classList.toggle("active");
-    
-      
+
     settruth(true);
-    
-    
   }
   function myFunction2() {
     //var element = document.getElementById("hidden");
@@ -79,7 +80,7 @@ function App() {
     //blu.classList.toggle("active");
     setname("");
     setamount(0);
-    
+
     settruth(false);
   }
 
@@ -269,55 +270,69 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <div id="rest">
-        <div className="calender">
-          <Calendar2 nextclick={nextclick}></Calendar2>
-        </div>
-        {/*<Calendar nextday={nextday} storedNames={storedNames}></Calendar>*/}
+    <div className="App ">
+      <Row className="head">
+        <h1>Expense Tracker</h1>
+      </Row>
 
-        <div id="disp">
-          <h1>Month total :{mtotal} Rs</h1>
-          <h1>Todays total:{tt} Rs</h1>
-          {/* <button onClick={myFunction}>Add Expense</button>*/}
-          {/*<button onClick={myFunction}>Add Expense</button>*/}
-          <Button variant="dark" size="lg" id="add"onClick={myFunction}>
-            Add Expense
-          </Button>{" "}
-        </div>
+      <Container fluid>
+        <Row>
+          <Col md={6} className="left">
+            <div className="calender">
+              <Calendar2 nextclick={nextclick}></Calendar2>
+            </div>
 
-        <ListItems lister={list} delete={deleteitem}></ListItems>
-      </div>
-      <Modal show={truth} onRequestClose={myFunction2}>
+            <div id="disp">
+              <h1>Month total :{mtotal} Rs</h1>
+              <h1>Todays total:{tt} Rs</h1>
+              <Button variant="dark" onClick={myFunction}>
+                Add Expense
+              </Button>{" "}
+            </div>
+          </Col>
+
+          <Col md={6} className="d-flex flex-column">
+            <ListItems lister={list} delete={deleteitem}></ListItems>
+          </Col>
+        </Row>
+      </Container>
+
+      <Modal
+        show={truth}
+        onRequestClose={myFunction2}
+        aria-labelledby="contained-modal-title-vcenter"
+        centered
+      >
         <Modal.Body>
-          
-            <form onSubmit={handlesubmit}>
-              <h2 id="val1">Name:</h2>
-              <input
-                type="text"
-                value={name}
-                id={name}
-                onChange={(e) => setname(e.target.value)}
-              ></input>
-              <br></br>
-              <br></br>
-              <h2 id="val2">Amount:</h2>
-              <input
-                type="text"
-                value={amount}
-                id={amount}
-                className="second"
-                onChange={handleinput}
-              ></input>
-              <br></br>
-              <p>
-                <input type="submit" onClick={myFunction}></input>
-                <Button variant="danger" size="lg" onClick={myFunction2}>
-                  close
-                </Button>{" "}
-              </p>
-            </form>
-          
+          <form
+            onSubmit={handlesubmit}
+            className="d-flex flex-column align-items-center justify-content-center"
+          >
+            <h2 id="val1">Name:</h2>
+            <input
+              type="text"
+              value={name}
+              id={name}
+              onChange={(e) => setname(e.target.value)}
+            ></input>
+            <br></br>
+            <br></br>
+            <h2 id="val2">Amount:</h2>
+            <input
+              type="text"
+              value={amount}
+              id={amount}
+              className="second"
+              onChange={handleinput}
+            ></input>
+            <br></br>
+            <p className="d-flex">
+              <input type="submit" onClick={myFunction}></input>
+              <Button variant="danger" size="lg" onClick={myFunction2}>
+                close
+              </Button>{" "}
+            </p>
+          </form>
         </Modal.Body>
       </Modal>
     </div>

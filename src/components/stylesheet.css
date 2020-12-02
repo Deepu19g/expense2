@@ -1,19 +1,13 @@
-/*
-  .mystyle {
-  display: block;
-  background-blend-mode: lighten;
-}*/
+
 h2 {
   left: 35%;
   top: 15%;
-  position: absolute;
+  /*position: absolute;*/
 }
 .calender {
-  left: 90px;
-  transform: scaleX(1.4);
+  transform: scale(1.2);
   top: 5%;
   z-index: 1;
-  position: absolute;
 }
 
 body {
@@ -28,14 +22,14 @@ input[type="text"] {
   padding: 10px;
   width: 200px;
   height: 35px;
-  margin-top: 40px;
-  margin-left: 120px;
+  margin-top: 3%;
 }
 .modal-content {
   border-radius: 20px;
+ 
 }
-.modal {
-top: 60px;
+/*.modal {
+  top: 60px;
 }
 .modal-body {
   left: 0%;
@@ -45,17 +39,19 @@ top: 60px;
   height: 450px;
   z-index: 2;
   border-radius: 50px;
-}
+}*/
 button {
   margin-left: 3% !important;
 }
-#disp {
-  position: absolute;
-  top: 58%;
-  left: 4%;
+
+.left {
+  /* align-self: center; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 form {
-  margin-top: 20%;
+  margin-top: 10%;
 }
 
 label {
@@ -64,48 +60,50 @@ label {
 #output {
   background-color: white;
 }
-.active {
-  filter: blur(5px);
-}
+
 .btn-danger {
-  position: absolute;
   right: 150px;
 }
 
 [type="submit"]:not(:disabled) {
   cursor: pointer;
-  position: absolute;
+
   right: 40px;
   height: 49px;
 }
 h1,
 .h1 {
-  font-size: 2.5rem;
+  font-size: 1.5rem;
 }
 
-#rest {
+/*#rest {
   position: inherit;
-}
-.mybox {
+}*/
+/*.mybox {
   position: absolute;
   left: 33%;
-}
+}*/
 #box {
   background-color: white;
   margin-right: 30%;
 
-  width: 500px;
+  width: 100%;
   border-radius: 10px;
   height: 70px;
+  text-align: left;
+  padding-left: 5%;
+}
+#box p span {
+  padding-right: 5%;
 }
 .btn-dark {
-  margin-top: 10%;
+  margin-top: 4%;
 }
 p {
-  left: -24%;
-  margin-top: 20px;
+  margin-top: 10px;
   padding-top: 20px;
-  position: relative;
+  display: flex;
+  justify-content: space-between;
   font-weight: 700;
   font-size: x-large;
 }
@@ -117,7 +115,61 @@ p {
   left: 190px;
 }
 
-@media (min-width: 320px) and (max-width: 500px) {
+#disp {
+  /* text-align: left; */
+  padding-top: 7%;
+  
+}
+
+.row {
+  padding: 50px 32px;
+}
+@media (max-width: 767px) {
+  .mybox {
+    margin-top: 5%;
+  }
+  #disp{
+    margin-top: 10%;
+  }
+}
+.head {
+  background-color: white;
+  padding-top: 0% !important;
+  
+}
+.modal {
+ 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  max-width: 90%;
+}
+.modal-backdrop {
+  
+  width: 100%;
+  height: 100%;
+ 
+}
+/*@media (max-width: 680px) and (min-width: 480px) {
+  .modal-content {
+    width: 400px;
+    margin-left: 10%;
+  }
+}
+@media (max-width: 479px) and (min-width: 400px) {
+  .modal-content {
+    width: 350px;
+    margin-left: 5%;
+  }
+}
+@media (max-width: 360px) and (min-width: 310px){
+  .modal-content{
+    width: 300px !important;
+    margin-left: 7%;
+  }
+}*/
+/*@media (min-width: 320px) and (max-width: 500px) {
   .modal {
     left: 15px;
   }
@@ -356,7 +408,7 @@ p {
     cursor: pointer;
     font-size: 30px;
   }*/
-  #null {
+/*#null {
     left: 19%;
     margin-top: 740px;
     position: absolute;
@@ -505,4 +557,4 @@ input[type="text"] {
   .calender{
     left: 60px;
   }
-}
+}*/

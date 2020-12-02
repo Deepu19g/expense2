@@ -34,7 +34,7 @@ function ListItems(props) {
   }
   else{
     console.log("no expense")
-    return <h2 id="null">No expense recorded</h2>
+    return <h2 id="null" className="mt-5">No expense recorded</h2>
 
   }
   

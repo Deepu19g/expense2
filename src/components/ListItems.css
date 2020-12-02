@@ -6,13 +6,7 @@
     text-align: left;
 } 
 
-#box p span{
-    /* margin-right: 40px; */
-    text-align: right !important;
-    position: absolute;
-    
-    right: 30px;
-}
+
 
 
 #box:hover{
