@@ -14,7 +14,7 @@ function ListItems(props) {
   const myListitem = mylist.map((item) => {
     return (
       
-      <div key={item.ide} id="box">
+      <div key={item.ide} id="box" >
         <p>
           {item.data} Rs,{item.title}
           <span >

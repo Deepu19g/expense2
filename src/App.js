@@ -271,10 +271,11 @@ function App() {
 
   return (
     <div className="App ">
-      <Row className="head">
+     <Container fluid>
+     <Row className="head">
         <h1>Expense Tracker</h1>
       </Row>
-
+      </Container>
       <Container fluid>
         <Row>
           <Col md={6} className="left">

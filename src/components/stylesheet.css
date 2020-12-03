@@ -5,7 +5,7 @@ h2 {
   /*position: absolute;*/
 }
 .calender {
-  transform: scale(1.2);
+ 
   top: 5%;
   z-index: 1;
 }
@@ -45,10 +45,10 @@ button {
 }
 
 .left {
-  /* align-self: center; */
+  /* align-self: center; 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center;*/
 }
 form {
   margin-top: 10%;
@@ -120,7 +120,9 @@ p {
   padding-top: 7%;
   
 }
-
+.DayPicker {
+  max-width: 100%;
+}
 .row {
   padding: 50px 32px;
 }
@@ -151,6 +153,9 @@ p {
   height: 100%;
  
 }
+/*.mybox #box {
+  margin-top: 4%;
+}*/
 /*@media (max-width: 680px) and (min-width: 480px) {
   .modal-content {
     width: 400px;
