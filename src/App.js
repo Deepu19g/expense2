@@ -21,7 +21,7 @@ function App() {
   const [mtotal, setmtotal] = useState(0);
   const [tt, settt] = useState(0);
   const [name, setname] = useState("");
-  const [amount, setamount] = useState(0);
+  const [amount, setamount] = useState();
   const [selectedday, setselectedday] = useState(new Date().toString());
   const [month, setmonth] = useState(new Date());
   const [list, addtolist] = useState([]);
@@ -72,6 +72,7 @@ function App() {
     //blu.classList.toggle("active");
 
     settruth(true);
+    
   }
   function myFunction2() {
     //var element = document.getElementById("hidden");
@@ -79,7 +80,7 @@ function App() {
     //var blu = document.getElementById("rest");
     //blu.classList.toggle("active");
     setname("");
-    setamount(0);
+    setamount();
 
     settruth(false);
   }
@@ -309,22 +310,24 @@ function App() {
             onSubmit={handlesubmit}
             className="d-flex flex-column align-items-center justify-content-center"
           >
-            <h2 id="val1">Name:</h2>
+            <h2 id="val1">Title:</h2>
             <input
               type="text"
               value={name}
               id={name}
               onChange={(e) => setname(e.target.value)}
+              required
             ></input>
             <br></br>
             <br></br>
             <h2 id="val2">Amount:</h2>
             <input
-              type="text"
-              value={amount}
+              type="number"
+              //value={amount}
               id={amount}
-              className="second"
+              //className="second"
               onChange={handleinput}
+              required
             ></input>
             <br></br>
             <p className="d-flex">

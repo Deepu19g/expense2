@@ -16,7 +16,7 @@ function ListItems(props) {
       
       <div key={item.ide} id="box" >
         <p>
-          {item.data} Rs,{item.title}
+        {item.title}-{item.data} Rs
           <span >
           
           <FontAwesomeIcon className="faicons" icon="trash" id="faicons" onClick={()=>{props.delete(item.ide)}}></FontAwesomeIcon>
