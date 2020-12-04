@@ -141,6 +141,11 @@ p {
   padding-top: 0% !important;
   
 }
+svg:not(:root).svg-inline--fa {
+  
+  font-size:1.8rem;
+  margin-right: 10px;
+}
 .modal {
  
   top: 50%;

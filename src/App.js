@@ -13,9 +13,10 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
-
-library.add(faTrash);
+import { faTrash, faClipboard } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
+library.add(faTrash, faClipboard);
 
 function App() {
   const [mtotal, setmtotal] = useState(0);
@@ -72,7 +73,6 @@ function App() {
     //blu.classList.toggle("active");
 
     settruth(true);
-    
   }
   function myFunction2() {
     //var element = document.getElementById("hidden");
@@ -80,7 +80,7 @@ function App() {
     //var blu = document.getElementById("rest");
     //blu.classList.toggle("active");
     setname("");
-    setamount();
+    setamount(0);
 
     settruth(false);
   }
@@ -272,11 +272,18 @@ function App() {
 
   return (
     <div className="App ">
-     <Container fluid>
-     <Row className="head">
+      {/*<Container fluid>
+     <Row className="head d-flex justify-content-center">
+       <FontAwesomeIcon icon="clipboard"></FontAwesomeIcon>
         <h1>Expense Tracker</h1>
       </Row>
-      </Container>
+     </Container>*/}
+      <Navbar bg="dark" variant="dark" className="d-flex  justify-content-center">
+        <Navbar.Brand href="#home">
+          <FontAwesomeIcon icon="clipboard"></FontAwesomeIcon>
+          Expense Tracker
+        </Navbar.Brand>
+      </Navbar>
       <Container fluid>
         <Row>
           <Col md={6} className="left">
