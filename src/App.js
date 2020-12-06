@@ -244,9 +244,9 @@ function App() {
   var parse;
 
   function deleteitem(dat) {
+    var subsuper = {};
     var delarray = [];
     teste = list.filter((item) => item.ide != dat);
-    console.log(teste);
     if (teste.length != 0) {
       addtolist(teste);
 
@@ -255,8 +255,6 @@ function App() {
         [new Date(selectedday).toDateString()]: teste,
       };
 
-      setsuperstate(subsuper);
-
       for (const obced of teste) {
         console.log(obced);
         //console.log( typeof (obce.data) )
@@ -264,19 +262,7 @@ function App() {
       }
 
       settt(tesum);
-      localStorage.setItem("Masterkey", JSON.stringify(subsuper));
-
-      for (const [key, value] of Object.entries(subsuper)) {
-        if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
-          for (const obak of value) {
-            temsum += Number(obak.data);
-            // console.log(obj);
-          }
-        }
-        delarray.push(new Date(key));
-      }
     } else {
-      var subsuper = {};
       //delete temppsuper.new Date(selectedday).toDateString();
       for (const [key, value] of Object.entries(superstate)) {
         if (key != new Date(selectedday).toDateString()) {
@@ -288,19 +274,18 @@ function App() {
       }
       addtolist(teste);
       settt(0);
-      console.log(subsuper);
-      setsuperstate(subsuper);
-      localStorage.setItem("Masterkey", JSON.stringify(subsuper));
-
-      for (const [key, value] of Object.entries(subsuper)) {
-        if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
-          for (const obak of value) {
-            temsum += Number(obak.data);
-            // console.log(obj);
-          }
+      //console.log(subsuper);
+    }
+    setsuperstate(subsuper);
+    localStorage.setItem("Masterkey", JSON.stringify(subsuper));
+    for (const [key, value] of Object.entries(subsuper)) {
+      if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
+        for (const obak of value) {
+          temsum += Number(obak.data);
+          // console.log(obj);
         }
-        delarray.push(new Date(key));
       }
+      delarray.push(new Date(key));
     }
     setmtotal(temsum);
     sethighlight(delarray);
