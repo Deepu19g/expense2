@@ -146,6 +146,13 @@ svg:not(:root).svg-inline--fa {
   font-size:1.8rem;
   margin-right: 10px;
 }
+.highlight {
+  background-color: blue
+}
+.DayPicker-Day--outside {
+  background-color: #40f570 !important;
+  
+}
 .modal {
  
   top: 50%;

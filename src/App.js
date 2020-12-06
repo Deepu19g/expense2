@@ -36,11 +36,15 @@ function App() {
     key: " ",
     value: [],
   });
+  const [highlight, sethighlight] = useState([]);
   var tempo = 0;
+
   //useEffect(() => {
   //  addtolist([]);
   //}, [selectedday]);
+
   useEffect(() => {
+    var hltarray = [];
     var teksum = 0;
     var tekmsum = 0;
     var list2 = [];
@@ -60,25 +64,18 @@ function App() {
             tekmsum += Number(oback.data);
           }
         }
+        hltarray.push(new Date(key));
       }
-      //console.log(list2);
+      sethighlight(hltarray);
+      console.log(hltarray);
       settt(teksum);
       setmtotal(tekmsum);
     }
   }, []);
   function myFunction() {
-    //var element = document.getElementById("hidden");
-    //element.classList.toggle("mystyle");
-    // var blu = document.getElementById("rest");
-    //blu.classList.toggle("active");
-
     settruth(true);
   }
   function myFunction2() {
-    //var element = document.getElementById("hidden");
-    //element.classList.toggle("mystyle");
-    //var blu = document.getElementById("rest");
-    //blu.classList.toggle("active");
     setname("");
     setamount(0);
 
@@ -99,6 +96,7 @@ function App() {
       ide: Date.now(),
     });
   }
+
   function handlesubmit(event) {
     //const sum=0
     event.preventDefault();
@@ -183,13 +181,17 @@ function App() {
       setsuperstate(tempsuper);
       localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
     }
+    console.log(highlight);
+    var temphlt = [...highlight, new Date(selectedday)];
+    sethighlight(temphlt);
     setname(" ");
     setamount(0);
     settruth(false);
   }
 
-  console.log(superstate);
   const nextclick = (data) => {
+    console.log(data);
+    console.log(data.toDateString());
     setselectedday(data.toString());
     var listed = [];
 
@@ -200,7 +202,7 @@ function App() {
 
     if (storeddata) {
       for (const [key, value] of Object.entries(storeddata)) {
-        console.log(data.toString());
+        console.log(data);
         if (key == data.toDateString()) {
           listed = value;
           for (const obj of value) {
@@ -278,7 +280,11 @@ function App() {
         <h1>Expense Tracker</h1>
       </Row>
      </Container>*/}
-      <Navbar bg="dark" variant="dark" className="d-flex  justify-content-center">
+      <Navbar
+        bg="dark"
+        variant="dark"
+        className="d-flex  justify-content-center"
+      >
         <Navbar.Brand href="#home">
           <FontAwesomeIcon icon="clipboard"></FontAwesomeIcon>
           Expense Tracker
@@ -288,7 +294,7 @@ function App() {
         <Row>
           <Col md={6} className="left">
             <div className="calender">
-              <Calendar2 nextclick={nextclick}></Calendar2>
+              <Calendar2 nextclick={nextclick} highlight={highlight} />
             </div>
 
             <div id="disp">

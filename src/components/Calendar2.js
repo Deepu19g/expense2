@@ -1,49 +1,35 @@
-import React,{useState} from 'react';
-import DayPicker from 'react-day-picker';
-import 'react-day-picker/lib/style.css';
+import React, { useState } from "react";
+import DayPicker from "react-day-picker";
+import "react-day-picker/lib/style.css";
 
+function Calendar2(props) {
+  const [selectedDay, setselectedDay] = useState();
 
-
-export default class Calendar2 extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleDayClick = this.handleDayClick.bind(this);
-    this.state = {
-      selectedDay: undefined,
-    };
+  function handleDayClick(day) {
+    setselectedDay(day);
+    props.nextclick(day);
   }
+  const birthdayStyle = `.DayPicker-Day--highlighted {
+    background-color: orange;
+    color: white;
+  }`;
+  console.log(props.highlight)
+  const modifiers = {
+    highlighted: props.highlight,
+  };
 
-  
-  
- 
-  handleDayClick(day) {
-   this.setState({ selectedDay: day });
-   this.props.nextclick(day);
-   
-  }
-
-  render() {
-    return (
-      <div>
-        
-        <DayPicker 
-
-          
-          selectedDays={this.state.selectedDay}
-          //onDayClick={this.props.handleDayClick} 
-         onDayClick={this.handleDayClick}
-         onMonthChange={this.props.nextclick}
-        />
-      
-        {/*<p>
-          {this.state.selectedDay
-            ? this.state.selectedDay.toLocaleDateString()
-            : 'Please select a day 👻'}
-          </p>
-          */}
-        
-        
-      </div>
-    );
-  }
+  return (
+    <div>
+      <style>{birthdayStyle}</style>
+      <DayPicker
+        modifiers={modifiers}
+        selectedDays={selectedDay}
+        //onDayClick={this.props.handleDayClick}
+        onDayClick={handleDayClick}
+        onMonthChange={props.nextclick}
+      />
+    </div>
+  );
 }
+
+export default Calendar2;
