@@ -37,6 +37,7 @@ function App() {
     value: [],
   });
   const [highlight, sethighlight] = useState([]);
+
   var tempo = 0;
 
   //useEffect(() => {
@@ -241,35 +242,68 @@ function App() {
   var tesum = 0;
   var temsum = 0;
   var parse;
+
   function deleteitem(dat) {
+    var delarray = [];
     teste = list.filter((item) => item.ide != dat);
     console.log(teste);
-    addtolist(teste);
-    var temppsuper = {
-      ...superstate,
-      [new Date(selectedday).toDateString()]: teste,
-    };
-    setsuperstate(temppsuper);
+    if (teste.length != 0) {
+      addtolist(teste);
 
-    for (const obced of teste) {
-      console.log(obced);
-      //console.log( typeof (obce.data) )
-      tesum += Number(obced.data);
-    }
-    console.log(tesum);
-    settt(tesum);
+      var subsuper = {
+        ...superstate,
+        [new Date(selectedday).toDateString()]: teste,
+      };
 
-    for (const [key, value] of Object.entries(temppsuper)) {
-      if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
-        for (const obak of value) {
-          temsum += Number(obak.data);
-          // console.log(obj);
+      setsuperstate(subsuper);
+
+      for (const obced of teste) {
+        console.log(obced);
+        //console.log( typeof (obce.data) )
+        tesum += Number(obced.data);
+      }
+
+      settt(tesum);
+      localStorage.setItem("Masterkey", JSON.stringify(subsuper));
+
+      for (const [key, value] of Object.entries(subsuper)) {
+        if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
+          for (const obak of value) {
+            temsum += Number(obak.data);
+            // console.log(obj);
+          }
         }
+        delarray.push(new Date(key));
+      }
+    } else {
+      var subsuper = {};
+      //delete temppsuper.new Date(selectedday).toDateString();
+      for (const [key, value] of Object.entries(superstate)) {
+        if (key != new Date(selectedday).toDateString()) {
+          subsuper = {
+            ...subsuper,
+            [key]: value,
+          };
+        }
+      }
+      addtolist(teste);
+      settt(0);
+      console.log(subsuper);
+      setsuperstate(subsuper);
+      localStorage.setItem("Masterkey", JSON.stringify(subsuper));
+
+      for (const [key, value] of Object.entries(subsuper)) {
+        if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
+          for (const obak of value) {
+            temsum += Number(obak.data);
+            // console.log(obj);
+          }
+        }
+        delarray.push(new Date(key));
       }
     }
     setmtotal(temsum);
-
-    localStorage.setItem("Masterkey", JSON.stringify(temppsuper));
+    sethighlight(delarray);
   }
 
   return (
