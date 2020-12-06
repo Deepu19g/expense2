@@ -13,7 +13,7 @@ function Calendar2(props) {
     background-color: orange;
     color: white;
   }`;
-  console.log(props.highlight)
+  console.log(props.highlight);
   const modifiers = {
     highlighted: props.highlight,
   };
@@ -24,7 +24,6 @@ function Calendar2(props) {
       <DayPicker
         modifiers={modifiers}
         selectedDays={selectedDay}
-        //onDayClick={this.props.handleDayClick}
         onDayClick={handleDayClick}
         onMonthChange={props.nextclick}
       />

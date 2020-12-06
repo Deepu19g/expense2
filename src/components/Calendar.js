@@ -3,14 +3,10 @@ import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 
 
-//import React from 'react'
 
 function Calendar(props) {
     const [selectedDay,setit] =useState(null)
-    //function handledayclick(day,props){
-         //props.nextday
-        
-       //}
+    
        function handleDayClick(day, { selected }) {
         if (selectedDay.selected)
         {

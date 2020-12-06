@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import logo from "./logo.svg";
+
 import "./App.css";
 import Modal from "react-bootstrap/Modal";
 import Calendar2 from "./components/Calendar2";
-//import Calendar from './components/Calendar';
+
 import { Button } from "react-bootstrap";
-//import "bootstrap/dist/css/bootstrap.css";
+
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./components/stylesheet.css";
 import ListItems from "./components/ListItems";
@@ -15,7 +15,7 @@ import Col from "react-bootstrap/Col";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faTrash, faClipboard } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
+import { Navbar } from "react-bootstrap";
 library.add(faTrash, faClipboard);
 
 function App() {
@@ -24,7 +24,7 @@ function App() {
   const [name, setname] = useState("");
   const [amount, setamount] = useState();
   const [selectedday, setselectedday] = useState(new Date().toString());
-  const [month, setmonth] = useState(new Date());
+
   const [list, addtolist] = useState([]);
   const [truth, settruth] = useState(false);
   const [current, addtocurrent] = useState({
@@ -38,17 +38,11 @@ function App() {
   });
   const [highlight, sethighlight] = useState([]);
 
-  var tempo = 0;
-
-  //useEffect(() => {
-  //  addtolist([]);
-  //}, [selectedday]);
-
   useEffect(() => {
     var hltarray = [];
     var teksum = 0;
     var tekmsum = 0;
-    var list2 = [];
+
     var Masterobject = JSON.parse(localStorage.getItem("Masterkey"));
     setsuperstate(Masterobject);
     if (Masterobject) {
@@ -83,10 +77,6 @@ function App() {
     settruth(false);
   }
 
-  var temp = 0;
-
-  var names = [];
-
   function handleinput(e) {
     setamount(e.target.value);
     console.log(e.target.value);
@@ -102,9 +92,6 @@ function App() {
     //const sum=0
     event.preventDefault();
 
-    console.log(selectedday);
-
-    console.log(tempsuper);
     var sum = 0,
       msum = 0;
     var mytemplist;
@@ -144,7 +131,7 @@ function App() {
           });
           console.log(mytemplist);
           console.log(superstate);
-          var tempsuper = {
+          tempsuper = {
             ...superstate,
             [new Date(selectedday).toDateString()]: mytemplist,
           };
@@ -155,7 +142,6 @@ function App() {
         if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
           for (const oba of value) {
             msum += Number(oba.data);
-            // console.log(obj);
           }
         }
       }
@@ -208,13 +194,11 @@ function App() {
           listed = value;
           for (const obj of value) {
             temp += Number(obj.data);
-            // console.log(obj)
           }
         }
         if (new Date(key).getMonth() == data.getMonth()) {
           for (const obc of value) {
             tempmsum += Number(obc.data);
-            // console.log(obj);
           }
         }
       }
@@ -241,7 +225,6 @@ function App() {
   var teste;
   var tesum = 0;
   var temsum = 0;
-  var parse;
 
   function deleteitem(dat) {
     var subsuper = {};
@@ -250,7 +233,7 @@ function App() {
     if (teste.length != 0) {
       addtolist(teste);
 
-      var subsuper = {
+      subsuper = {
         ...superstate,
         [new Date(selectedday).toDateString()]: teste,
       };
@@ -274,7 +257,6 @@ function App() {
       }
       addtolist(teste);
       settt(0);
-      //console.log(subsuper);
     }
     setsuperstate(subsuper);
     localStorage.setItem("Masterkey", JSON.stringify(subsuper));
@@ -282,7 +264,6 @@ function App() {
       if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
         for (const obak of value) {
           temsum += Number(obak.data);
-          // console.log(obj);
         }
       }
       delarray.push(new Date(key));
@@ -293,12 +274,6 @@ function App() {
 
   return (
     <div className="App ">
-      {/*<Container fluid>
-     <Row className="head d-flex justify-content-center">
-       <FontAwesomeIcon icon="clipboard"></FontAwesomeIcon>
-        <h1>Expense Tracker</h1>
-      </Row>
-     </Container>*/}
       <Navbar
         bg="dark"
         variant="dark"
@@ -355,9 +330,7 @@ function App() {
             <h2 id="val2">Amount:</h2>
             <input
               type="number"
-              //value={amount}
               id={amount}
-              //className="second"
               onChange={handleinput}
               required
             ></input>
