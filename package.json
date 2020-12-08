@@ -2,7 +2,6 @@
   "name": "expense",
   "version": "0.1.0",
   "private": true,
-  
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-solid-svg-icons": "^5.15.1",
@@ -17,6 +16,7 @@
     "react-day-picker": "^7.4.8",
     "react-dom": "^16.13.1",
     "react-modal": "^3.11.2",
+    "react-router": "^3.0.5",
     "react-scripts": "3.4.3"
   },
   "scripts": {

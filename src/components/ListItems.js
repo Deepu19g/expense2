@@ -8,7 +8,7 @@ function ListItems(props) {
     return (
       <div key={item.ide} id="box">
         <p>
-          {item.title}-{item.data} Rs
+        {item.title} : Rs {item.data}
           <span>
             <FontAwesomeIcon
               className="faicons"

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 import "./App.css";
-import Modal from "react-bootstrap/Modal";
+import Modal from 'react-bootstrap/Modal';
 import Calendar2 from "./components/Calendar2";
 
 import { Button } from "react-bootstrap";
@@ -30,11 +30,11 @@ function App() {
   const [current, addtocurrent] = useState({
     data: " ",
     title: " ",
-    ide: " ",
+    ide: " "
   });
   const [superstate, setsuperstate] = useState({
     key: " ",
-    value: [],
+    value: []
   });
   const [highlight, sethighlight] = useState([]);
 
@@ -62,7 +62,7 @@ function App() {
         hltarray.push(new Date(key));
       }
       sethighlight(hltarray);
-      
+      console.log(hltarray);
       settt(teksum);
       setmtotal(tekmsum);
     }
@@ -84,7 +84,7 @@ function App() {
       data: e.target.value,
 
       title: name,
-      ide: Date.now(),
+      ide: Date.now()
     });
   }
 
@@ -104,12 +104,12 @@ function App() {
       addtocurrent({
         data: " ",
         ide: " ",
-        title: " ",
+        title: " "
       });
       console.log(mytemplist);
       var tempsuper = {
         ...superstate,
-        [new Date(selectedday).toDateString()]: mytemplist,
+        [new Date(selectedday).toDateString()]: mytemplist
       };
       setsuperstate(tempsuper);
       localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
@@ -127,13 +127,13 @@ function App() {
           addtocurrent({
             data: " ",
             ide: " ",
-            title: " ",
+            title: " "
           });
           console.log(mytemplist);
           console.log(superstate);
           tempsuper = {
             ...superstate,
-            [new Date(selectedday).toDateString()]: mytemplist,
+            [new Date(selectedday).toDateString()]: mytemplist
           };
           setsuperstate(tempsuper);
           localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
@@ -157,13 +157,13 @@ function App() {
       addtocurrent({
         data: " ",
         ide: " ",
-        title: " ",
+        title: " "
       });
       console.log(mytemplist);
 
-       tempsuper = {
+      tempsuper = {
         ...superstate,
-        [new Date(selectedday).toDateString()]: mytemplist,
+        [new Date(selectedday).toDateString()]: mytemplist
       };
       setsuperstate(tempsuper);
       localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
@@ -235,7 +235,7 @@ function App() {
 
       subsuper = {
         ...superstate,
-        [new Date(selectedday).toDateString()]: teste,
+        [new Date(selectedday).toDateString()]: teste
       };
 
       for (const obced of teste) {
@@ -251,7 +251,7 @@ function App() {
         if (key !== new Date(selectedday).toDateString()) {
           subsuper = {
             ...subsuper,
-            [key]: value,
+            [key]: value
           };
         }
       }
@@ -293,7 +293,7 @@ function App() {
 
             <div id="disp">
               <h1>Month total : Rs {mtotal}</h1>
-              <h1>Todays total: Rs {tt}</h1>
+              <h1>Todays total : Rs {tt}</h1>
               <Button variant="dark" onClick={myFunction}>
                 Add Expense
               </Button>{" "}
@@ -305,11 +305,10 @@ function App() {
           </Col>
         </Row>
       </Container>
-
       <footer>&copy; Copyright @deepu19g</footer>
-
       <Modal
         show={truth}
+        //onRequestClose={myFunction2}
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -327,7 +326,6 @@ function App() {
               required
             ></input>
             <br></br>
-            <br></br>
             <h2 id="val2">Amount:</h2>
             <input
               type="number"
@@ -336,19 +334,16 @@ function App() {
               required
             ></input>
             <br></br>
-            <div className="d-flex">
+            <p className="d-flex">
               <Button
                 className="btn btn-lg btn-success"
                 type="submit"
                 onClick={myFunction}
-              >
-                {" "}
-                Add{" "}
-              </Button>
+              > Add </Button>
               <Button variant="danger" size="lg" onClick={myFunction2}>
-                close
+                Close
               </Button>{" "}
-            </div>
+            </p>
           </form>
         </Modal.Body>
       </Modal>
