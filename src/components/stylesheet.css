@@ -10,7 +10,15 @@ h2 {
   z-index: 1;
   
 }
-
+footer {
+  
+  color: black;
+  font-size: 1 rem;
+  
+}
+#sub {
+  background-color: #40f570;
+}
 body {
   background-color: #40f570;
 }
@@ -102,7 +110,9 @@ p {
 .DayPicker {
   max-width: 100%;
   border: 2px solid black;
+  border-radius: 5px;
 }
+
 .row {
   padding: 50px 32px;
 }

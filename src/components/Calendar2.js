@@ -13,7 +13,7 @@ function Calendar2(props) {
     background-color: orange;
     color: white;
   }`;
-  console.log(props.highlight);
+  
   const modifiers = {
     highlighted: props.highlight,
   };

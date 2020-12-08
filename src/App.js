@@ -47,14 +47,14 @@ function App() {
     setsuperstate(Masterobject);
     if (Masterobject) {
       for (const [key, value] of Object.entries(Masterobject)) {
-        if (key == new Date().toDateString()) {
+        if (key === new Date().toDateString()) {
           addtolist(value);
           for (const prim of value) {
             console.log(prim);
             teksum += Number(prim.data);
           }
         }
-        if (new Date(key).getMonth() == new Date().getMonth()) {
+        if (new Date(key).getMonth() === new Date().getMonth()) {
           for (const oback of value) {
             tekmsum += Number(oback.data);
           }
@@ -62,7 +62,7 @@ function App() {
         hltarray.push(new Date(key));
       }
       sethighlight(hltarray);
-      console.log(hltarray);
+      
       settt(teksum);
       setmtotal(tekmsum);
     }
@@ -115,7 +115,7 @@ function App() {
       localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
       console.log(tempsuper);
       for (const [key, value] of Object.entries(Masterobject)) {
-        if (key == new Date(selectedday).toDateString()) {
+        if (key === new Date(selectedday).toDateString()) {
           for (const obk of value) {
             sum += Number(obk.data);
           }
@@ -139,7 +139,7 @@ function App() {
           localStorage.setItem("Masterkey", JSON.stringify(tempsuper));
         }
 
-        if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
+        if (new Date(key).getMonth() === new Date(selectedday).getMonth()) {
           for (const oba of value) {
             msum += Number(oba.data);
           }
@@ -161,7 +161,7 @@ function App() {
       });
       console.log(mytemplist);
 
-      var tempsuper = {
+       tempsuper = {
         ...superstate,
         [new Date(selectedday).toDateString()]: mytemplist,
       };
@@ -190,13 +190,13 @@ function App() {
     if (storeddata) {
       for (const [key, value] of Object.entries(storeddata)) {
         console.log(data);
-        if (key == data.toDateString()) {
+        if (key === data.toDateString()) {
           listed = value;
           for (const obj of value) {
             temp += Number(obj.data);
           }
         }
-        if (new Date(key).getMonth() == data.getMonth()) {
+        if (new Date(key).getMonth() === data.getMonth()) {
           for (const obc of value) {
             tempmsum += Number(obc.data);
           }
@@ -229,8 +229,8 @@ function App() {
   function deleteitem(dat) {
     var subsuper = {};
     var delarray = [];
-    teste = list.filter((item) => item.ide != dat);
-    if (teste.length != 0) {
+    teste = list.filter((item) => item.ide !== dat);
+    if (teste.length !== 0) {
       addtolist(teste);
 
       subsuper = {
@@ -248,7 +248,7 @@ function App() {
     } else {
       //delete temppsuper.new Date(selectedday).toDateString();
       for (const [key, value] of Object.entries(superstate)) {
-        if (key != new Date(selectedday).toDateString()) {
+        if (key !== new Date(selectedday).toDateString()) {
           subsuper = {
             ...subsuper,
             [key]: value,
@@ -261,7 +261,7 @@ function App() {
     setsuperstate(subsuper);
     localStorage.setItem("Masterkey", JSON.stringify(subsuper));
     for (const [key, value] of Object.entries(subsuper)) {
-      if (new Date(key).getMonth() == new Date(selectedday).getMonth()) {
+      if (new Date(key).getMonth() === new Date(selectedday).getMonth()) {
         for (const obak of value) {
           temsum += Number(obak.data);
         }
@@ -292,8 +292,8 @@ function App() {
             </div>
 
             <div id="disp">
-              <h1>Month total :{mtotal} Rs</h1>
-              <h1>Todays total:{tt} Rs</h1>
+              <h1>Month total : Rs {mtotal}</h1>
+              <h1>Todays total: Rs {tt}</h1>
               <Button variant="dark" onClick={myFunction}>
                 Add Expense
               </Button>{" "}
@@ -306,9 +306,10 @@ function App() {
         </Row>
       </Container>
 
+      <footer>&copy; Copyright @deepu19g</footer>
+
       <Modal
         show={truth}
-        onRequestClose={myFunction2}
         aria-labelledby="contained-modal-title-vcenter"
         centered
       >
@@ -335,12 +336,19 @@ function App() {
               required
             ></input>
             <br></br>
-            <p className="d-flex">
-              <input type="submit" onClick={myFunction}></input>
+            <div className="d-flex">
+              <Button
+                className="btn btn-lg btn-success"
+                type="submit"
+                onClick={myFunction}
+              >
+                {" "}
+                Add{" "}
+              </Button>
               <Button variant="danger" size="lg" onClick={myFunction2}>
                 close
               </Button>{" "}
-            </p>
+            </div>
           </form>
         </Modal.Body>
       </Modal>

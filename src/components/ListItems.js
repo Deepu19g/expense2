@@ -24,11 +24,11 @@ function ListItems(props) {
     );
   });
 
-  console.log(myListitem);
-  if (myListitem.length != 0) {
+  
+  if (myListitem.length !== 0) {
     return <div className="mybox">{myListitem}</div>;
   } else {
-    console.log("no expense");
+    
     return (
       <h2 id="null" className="mt-5">
         No expense recorded
